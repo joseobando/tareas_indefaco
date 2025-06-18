@@ -1,0 +1,22 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    padding: 20px;
+}
+form {
+    margin-bottom: 20px;
+}
+ul {
+    list-style: none;
+    padding: 0;
+}
+li {
+    background: #fff;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+.verde { background-color: #d4edda; }
+.amarillo { background-color: #fff3cd; }
+.rojo { background-color: #f8d7da; }
+.blanco { background-color: #e2e3e5; }
