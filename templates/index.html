@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Tareas</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>Gestión de Tareas INDEFACO</h1>
+    <form action="/agregar" method="post">
+        <input type="text" name="texto" placeholder="Descripción de la tarea" required>
+        <select name="color">
+            <option value="green">No prioritario</option>
+            <option value="yellow">Prioritario</option>
+            <option value="red">Urgente</option>
+        </select>
+        <input type="text" name="autor" placeholder="Tu nombre" required>
+        <button type="submit">Agregar</button>
+    </form>
+    <h2>Tareas Activas</h2>
+    <ul>
+        {% for i, tarea in enumerate(tareas) %}
+        <li style="color: {{ tarea.color }};">
+            {{ tarea.texto }} - {{ tarea.fecha }} - {{ tarea.autor }}
+            <form action="/completar/{{ i }}" method="post" style="display:inline;">
+                <button>✔</button>
+            </form>
+            <form action="/eliminar/{{ i }}" method="post" style="display:inline;">
+                <button>🗑</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+    <h2>Tareas Completadas</h2>
+    <ul>
+        {% for i, tarea in enumerate(completadas) %}
+        <li style="color: gray;">
+            {{ tarea.texto }} - {{ tarea.fecha }} - {{ tarea.autor }}
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
