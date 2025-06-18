@@ -4,7 +4,14 @@ services:
     env: python
     plan: free
     buildCommand: pip install -r requirements.txt
+<<<<<<< HEAD
     startCommand: gunicorn app:app
     envVars:
       - key: PYTHON_VERSION
         value: 3.10
+=======
+    startCommand: python app.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10
+>>>>>>> a6585d755692f2117a329c8960e77a5fee8a43fb

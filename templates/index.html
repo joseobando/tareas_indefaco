@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+<<<<<<< HEAD
     <title>Gestión de Tareas</title>
     <link rel="stylesheet" href="/static/styles.css">
 </head>
@@ -27,16 +28,50 @@
             </form>
             <form action="/eliminar/{{ i }}" method="post" style="display:inline;">
                 <button>🗑</button>
+=======
+    <title>Gestor de Tareas</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>Mis Tareas</h1>
+    <form action="/agregar" method="POST">
+        <input type="text" name="texto" placeholder="Nueva tarea" required>
+        <select name="prioridad">
+            <option value="verde">No prioritario</option>
+            <option value="amarillo">Prioritario</option>
+            <option value="rojo">Urgente</option>
+        </select>
+        <input type="text" name="autor" placeholder="Tu nombre">
+        <button type="submit">Agregar</button>
+    </form>
+    <h2>Pendientes</h2>
+    <ul>
+        {% for tarea in tareas %}
+        <li class="{{ tarea.prioridad }}">
+            {{ tarea.texto }} - {{ tarea.fecha }} - {{ tarea.autor }}
+            <form action="/completar/{{ tarea.id }}" method="POST" style="display:inline;">
+                <button>✓</button>
+            </form>
+            <form action="/eliminar/{{ tarea.id }}" method="POST" style="display:inline;">
+                <button>X</button>
+>>>>>>> a6585d755692f2117a329c8960e77a5fee8a43fb
             </form>
         </li>
         {% endfor %}
     </ul>
+<<<<<<< HEAD
     <h2>Tareas Completadas</h2>
     <ul>
         {% for i, tarea in enumerate(completadas) %}
         <li style="color: gray;">
             {{ tarea.texto }} - {{ tarea.fecha }} - {{ tarea.autor }}
         </li>
+=======
+    <h2>Completadas</h2>
+    <ul>
+        {% for tarea in completadas %}
+        <li class="blanco">{{ tarea.texto }} - {{ tarea.fecha }}</li>
+>>>>>>> a6585d755692f2117a329c8960e77a5fee8a43fb
         {% endfor %}
     </ul>
 </body>

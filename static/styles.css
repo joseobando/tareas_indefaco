@@ -1,10 +1,15 @@
 body {
     font-family: Arial, sans-serif;
+<<<<<<< HEAD
     padding: 20px;
     background: #f4f4f4;
 }
 h1, h2 {
     color: #333;
+=======
+    background: #f4f4f4;
+    padding: 20px;
+>>>>>>> a6585d755692f2117a329c8960e77a5fee8a43fb
 }
 form {
     margin-bottom: 20px;
@@ -18,4 +23,12 @@ li {
     padding: 10px;
     margin-bottom: 5px;
     border-radius: 5px;
+<<<<<<< HEAD
 }
+=======
+}
+.verde { background-color: #d4edda; }
+.amarillo { background-color: #fff3cd; }
+.rojo { background-color: #f8d7da; }
+.blanco { background-color: #e2e3e5; }
+>>>>>>> a6585d755692f2117a329c8960e77a5fee8a43fb
