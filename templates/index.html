@@ -2,77 +2,43 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-<<<<<<< HEAD
-    <title>Gestión de Tareas</title>
+    <title>Lista de Tareas INDEFACO</title>
     <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-    <h1>Gestión de Tareas INDEFACO</h1>
-    <form action="/agregar" method="post">
-        <input type="text" name="texto" placeholder="Descripción de la tarea" required>
+    <h1>Lista de Tareas INDEFACO</h1>
+    <form method="POST" action="/agregar">
+        <input type="text" name="texto" placeholder="Escribe la tarea" required>
         <select name="color">
-            <option value="green">No prioritario</option>
-            <option value="yellow">Prioritario</option>
-            <option value="red">Urgente</option>
-        </select>
-        <input type="text" name="autor" placeholder="Tu nombre" required>
-        <button type="submit">Agregar</button>
-    </form>
-    <h2>Tareas Activas</h2>
-    <ul>
-        {% for i, tarea in enumerate(tareas) %}
-        <li style="color: {{ tarea.color }};">
-            {{ tarea.texto }} - {{ tarea.fecha }} - {{ tarea.autor }}
-            <form action="/completar/{{ i }}" method="post" style="display:inline;">
-                <button>✔</button>
-            </form>
-            <form action="/eliminar/{{ i }}" method="post" style="display:inline;">
-                <button>🗑</button>
-=======
-    <title>Gestor de Tareas</title>
-    <link rel="stylesheet" href="/static/styles.css">
-</head>
-<body>
-    <h1>Mis Tareas</h1>
-    <form action="/agregar" method="POST">
-        <input type="text" name="texto" placeholder="Nueva tarea" required>
-        <select name="prioridad">
-            <option value="verde">No prioritario</option>
-            <option value="amarillo">Prioritario</option>
-            <option value="rojo">Urgente</option>
+            <option value="green">Prioridad baja</option>
+            <option value="yellow">Prioridad media</option>
+            <option value="red">Prioridad alta</option>
         </select>
         <input type="text" name="autor" placeholder="Tu nombre">
         <button type="submit">Agregar</button>
     </form>
-    <h2>Pendientes</h2>
-    <ul>
-        {% for tarea in tareas %}
-        <li class="{{ tarea.prioridad }}">
-            {{ tarea.texto }} - {{ tarea.fecha }} - {{ tarea.autor }}
-            <form action="/completar/{{ tarea.id }}" method="POST" style="display:inline;">
-                <button>✓</button>
-            </form>
-            <form action="/eliminar/{{ tarea.id }}" method="POST" style="display:inline;">
-                <button>X</button>
->>>>>>> a6585d755692f2117a329c8960e77a5fee8a43fb
-            </form>
-        </li>
-        {% endfor %}
-    </ul>
-<<<<<<< HEAD
+
+    <h2>Tareas Pendientes</h2>
+    {% for t in tareas %}
+    <div class="tarea {{ t.color }}">
+        {{ t.texto }} - {{ t.autor }} - {{ t.fecha }}
+        <form method="POST" action="/completar/{{ loop.index0 }}" style="display:inline">
+            <button>✔</button>
+        </form>
+        <form method="POST" action="/eliminar/{{ loop.index0 }}" style="display:inline">
+            <button>✖</button>
+        </form>
+    </div>
+    {% endfor %}
+
     <h2>Tareas Completadas</h2>
-    <ul>
-        {% for i, tarea in enumerate(completadas) %}
-        <li style="color: gray;">
-            {{ tarea.texto }} - {{ tarea.fecha }} - {{ tarea.autor }}
-        </li>
-=======
-    <h2>Completadas</h2>
-    <ul>
-        {% for tarea in completadas %}
-        <li class="blanco">{{ tarea.texto }} - {{ tarea.fecha }}</li>
->>>>>>> a6585d755692f2117a329c8960e77a5fee8a43fb
-        {% endfor %}
-    </ul>
+    {% for c in completadas %}
+    <div class="tarea white">
+        {{ c.texto }} - {{ c.autor }} - {{ c.fecha }}
+        <form method="POST" action="/eliminar/{{ loop.index0 + tareas|length }}" style="display:inline">
+            <button>🗑</button>
+        </form>
+    </div>
+    {% endfor %}
 </body>
 </html>
